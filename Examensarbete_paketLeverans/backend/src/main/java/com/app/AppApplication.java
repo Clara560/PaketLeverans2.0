@@ -1,13 +1,13 @@
-package com.examensarbete_paketleverans;
+package com.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExamensarbetePaketLeveransApplication {
+public class AppApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ExamensarbetePaketLeveransApplication.class, args);
+        SpringApplication.run(AppApplication.class, args);
     }
 
 }

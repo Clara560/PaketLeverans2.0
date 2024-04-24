@@ -1,4 +1,4 @@
-package com.app.DTOs.types;
+package com.app.controllers.types;
 
 public class userDeleteRequest {
 }

@@ -1,16 +1,16 @@
 package com.app.services;
 
-import com.app.data.entities.order;
-import com.app.data.repositories.orderRepository;
+import com.app.data.entities.Order;
+import com.app.data.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class orderService {
+public class OrderService {
 
 
     @Autowired
-    orderRepository orderRepository;
+    OrderRepository orderRepository;
 
     public void createNewOrder() {
 
@@ -24,11 +24,11 @@ public class orderService {
 
     }
 
-    public order getAllOrders (){
+    public Order getAllOrders (){
         return null;
     }
 
-    public order getOrderById(int id) {
+    public Order getOrderById(int id) {
 
         return null;
     }

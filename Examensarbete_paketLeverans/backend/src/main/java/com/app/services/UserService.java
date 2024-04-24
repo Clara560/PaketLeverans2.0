@@ -2,13 +2,13 @@ package com.app.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.app.data.repositories.userRepositrory;
+import com.app.data.repositories.UserRepository;
 
 @Service
-public class userService {
+public class UserService {
 
     @Autowired
-    userRepositrory userRepository;
+    UserRepository userRepository;
 
     public void createNewUser(){
 

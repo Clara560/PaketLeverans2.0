@@ -1,14 +1,14 @@
 package com.app.services;
 
-import com.app.data.repositories.parcelRepository;
+import com.app.data.repositories.ParcelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class parcelService {
+public class ParcelService {
 
     @Autowired
-    parcelRepository parcelRepository;
+    ParcelRepository parcelRepository;
 
     public void createNewParcel (){
 

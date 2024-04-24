@@ -2,14 +2,16 @@ package com.app.data.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
-@Table (name = "parcel")
-public class parcel {
+@Table (name = "tbl_parcel")
+public class Parcel {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long parcelId;
+    private long id;
 
     @Column (name = "parcelWeight")
     private double parcelWeight;
@@ -22,19 +24,4 @@ public class parcel {
 
     @Column (name = "parcelWidth")
     private double parcelWidth;
-
-    @Column (name = "parcelDescription")
-    private String parcelDescription;
-
-    @Column (name = "parcelDateCreated")
-    private String parcelDateCreated;
-
-    @Column (name = "parcelStatus")
-    private String parcelStatus;
-
-    @Column (name = "parcelComments")
-    private String parcelComments;
-
-
-
 }

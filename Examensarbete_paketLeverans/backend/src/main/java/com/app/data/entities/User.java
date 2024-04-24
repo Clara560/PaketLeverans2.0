@@ -3,8 +3,8 @@ package com.app.data.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "user")
-public class user {
+@Table (name = "tbl_user")
+public class User {
 
     @Id
     @Column(name = "id")
@@ -22,11 +22,4 @@ public class user {
 
     @Column (name = "phone")
     private Long phone;
-
-
-    //Join to primary key?
-    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
-    @JoinColumn (name = "addressId")
-    private address address;
-
 }

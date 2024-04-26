@@ -24,6 +24,9 @@ public class User {
     @Column(name = "type")
     private int type;
 
+    @Column(name = "keycloakUserId")
+    private String keycloakUserId;
+
     public long getId() {
         return id;
     }

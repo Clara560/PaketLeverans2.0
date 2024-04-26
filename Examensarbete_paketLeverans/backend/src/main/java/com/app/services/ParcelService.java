@@ -55,15 +55,16 @@ public class ParcelService {
             parcelRepository.deleteById(parcelDeleteRequest.getId());
     }
 
-    public Optional<Parcel> getParcelById(long id) {
-        return parcelRepository.findById(id);
+    public ResponseEntity<ParcelResponse> getParcelById(long id) {
+        return ResponseEntity.ok(new ParcelResponse(parcelRepository.findById(id).get()));
     }
 
-    public void getAllParcels (){
-
+    public ResponseEntity<ParcelResponse> getAllParcels (ParcelResponse parcelResponse){
+        return ResponseEntity.ok(new ParcelResponse(parcelRepository.findAll()));
     }
 
-    public void getParcelByUserId (int id){
+    public ResponseEntity<ParcelResponse> getParcelByUserId (long id){
+        return ResponseEntity.ok(new ParcelResponse(parcelRepository.findByUserId(id)));
 
     }
 

@@ -3,20 +3,22 @@ import { CommonModule } from '@angular/common';
 import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {KeycloakService} from "./services/keycloak-service/keycloak.service";
-
-
+import {HttpClientModule} from "@angular/common/http";
+import {OrderService} from "./services/order-service/order.service";
 
 @NgModule({
   declarations: [
 
   ],
   imports: [
-    CommonModule,
+    CommonModule,lientM
+    HttpCodule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   providers: [
-    KeycloakService
+    KeycloakService,
+    OrderService
   ],
   exports: [
     HeaderComponent,

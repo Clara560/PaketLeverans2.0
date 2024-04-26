@@ -1,9 +1,15 @@
 package com.app.services;
 
+import com.app.controllers.types.OrderTypes.OrderCreateRequest;
+import com.app.controllers.types.OrderTypes.OrderResponse;
+import com.app.controllers.types.OrderTypes.OrderUpdateRequest;
 import com.app.data.entities.Order;
 import com.app.data.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -12,27 +18,63 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-    public void createNewOrder() {
+    public ResponseEntity<OrderResponse> createNewOrder(OrderCreateRequest orderCreateRequest) {
+        Order order = new Order();
+
+        order.setOrderComments(orderCreateRequest.getOrderComments());
+        order.setOrderDateCreated(orderCreateRequest.getOrderDateCreated());
+        order.setOrderStatus(orderCreateRequest.getOrderStatus());
+        order.setOrderDescription(orderCreateRequest.getOrderDescription());
+        order.setDeliveryAddress(orderCreateRequest.getDeliveryAddress());
+        order.setDispatchAddress(orderCreateRequest.getDispatchAddress());
+        order.setUser(orderCreateRequest.getUser());
+
+        return ResponseEntity.ok(new OrderResponse(orderRepository.save(order)));
+    }
+
+    public void deleteOrder(long id) {
+        orderRepository.deleteById(id);
+    }
+
+    public ResponseEntity<OrderResponse> updateOrder(OrderUpdateRequest orderUpdateRequest) {
+        Optional<Order> order = orderRepository.findById(orderUpdateRequest.getId());
+
+        if (order.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        if (order.isPresent()) {
+            order.get().setOrderComments(orderUpdateRequest.getOrderComments());
+            order.get().setOrderDateCreated(orderUpdateRequest.getOrderDateCreated());
+            order.get().setOrderStatus(orderUpdateRequest.getOrderStatus());
+            order.get().setOrderDescription(orderUpdateRequest.getOrderDescription());
+            order.get().setDeliveryAddress(orderUpdateRequest.getDeliveryAddress());
+            order.get().setDispatchAddress(orderUpdateRequest.getDispatchAddress());
+            order.get().setUser(orderUpdateRequest.getUser());
+
+            orderRepository.save(order.get());
+
+        }
+
+        return ResponseEntity.ok(new OrderResponse(orderRepository.save(order.get())));
+
 
     }
 
-    public void deleteOrder() {
-
+    public ResponseEntity<OrderResponse> getAllOrders() {
+        return ResponseEntity.ok(new OrderResponse(orderRepository.findAll()));
     }
 
-    public void updateOrder() {
+    public ResponseEntity<OrderResponse> getOrderById(long id) {
+        Optional<Order> optionalOrder = orderRepository.findById(id);
 
-    }
+        if (optionalOrder.isEmpty())
+            return ResponseEntity.notFound().build();
 
-    public Order getAllOrders (){
-        return null;
-    }
-
-    public Order getOrderById(int id) {
-
-        return null;
+        return ResponseEntity.ok(new OrderResponse(optionalOrder.get()));
     }
 
 
-
+    public ResponseEntity<OrderResponse> getOrderByUserId(long id) {
+        return ResponseEntity.ok(new OrderResponse(orderRepository.findByUserId(id)));
+    }
 }

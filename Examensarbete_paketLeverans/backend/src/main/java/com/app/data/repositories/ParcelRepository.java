@@ -10,6 +10,4 @@ public interface ParcelRepository extends CrudRepository<Parcel, Long> {
 
     @Override
     List<Parcel> findAll();
-
-    List<Parcel> findByUserId(Long userId);
 }

@@ -63,10 +63,4 @@ public class ParcelService {
         return ResponseEntity.ok(new ParcelResponse(parcelRepository.findAll()));
     }
 
-    public ResponseEntity<ParcelResponse> getParcelByUserId (long id){
-        return ResponseEntity.ok(new ParcelResponse(parcelRepository.findByUserId(id)));
-
-    }
-
-
 }

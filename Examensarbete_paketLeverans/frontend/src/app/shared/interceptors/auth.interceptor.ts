@@ -11,20 +11,20 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return of(JSON.parse(localStorage.getItem('access-token') ?? ""))
+    return of(JSON.parse(localStorage.getItem('access-token') ?? 'null'))
       .pipe(
         switchMap((auth) => {
           const token = auth ? auth.access_token : null;
-          request = request.clone({
-            setHeaders: {
-              Authorization: token
-            }
-          });
+          if (token)
+            request = request.clone({
+              setHeaders: {
+                Authorization: `Bearer ${token}`
+              }
+            });
           return next.handle(request);
         }),
         catchError((err) => {
           if (err.status === 401 || err.status === 403) {
-            localStorage.setItem('access-token', "");
             this.router.navigate(['/login']);
           }
           return throwError(err);

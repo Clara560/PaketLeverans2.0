@@ -36,6 +36,7 @@ export class LoginPageComponent {
         this.router.navigate(['/user/orders']);
       }),
       error: (error: Error) => {
+        console.log(error)
       }
     })
   }

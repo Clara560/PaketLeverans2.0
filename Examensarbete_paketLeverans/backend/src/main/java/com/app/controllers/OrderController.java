@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/order")
-public class OrderController extends UserAuthService {
+public class OrderController {
 
 
     @Autowired

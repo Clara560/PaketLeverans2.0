@@ -11,8 +11,8 @@ import {OrderService} from "./services/order-service/order.service";
 
   ],
   imports: [
-    CommonModule,lientM
-    HttpCodule,
+    CommonModule,
+    HttpClientModule,
     HeaderComponent,
     FooterComponent,
   ],

@@ -27,6 +27,15 @@ public class User {
     @Column(name = "keycloakUserId")
     private String keycloakUserId;
 
+
+    public String getKeycloakUserId() {
+        return keycloakUserId;
+    }
+
+    public void setKeycloakUserId(String keycloakUserId) {
+        this.keycloakUserId = keycloakUserId;
+    }
+
     public long getId() {
         return id;
     }

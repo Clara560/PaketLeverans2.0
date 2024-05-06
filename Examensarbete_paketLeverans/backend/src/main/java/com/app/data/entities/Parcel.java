@@ -64,4 +64,8 @@ public class Parcel {
     public void setParcelWidth(double parcelWidth) {
         this.parcelWidth = parcelWidth;
     }
+
+    public boolean isIncomplete() {
+        return parcelHeight <= 0 || parcelLength <= 0 || parcelWeight <= 0 || parcelWidth <= 0;
+    }
 }

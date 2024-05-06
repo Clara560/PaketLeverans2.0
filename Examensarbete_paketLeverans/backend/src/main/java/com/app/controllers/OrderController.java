@@ -27,7 +27,11 @@ public class OrderController {
 
     @PostMapping("/new")
     public ResponseEntity<OrderResponse> newOrder(@RequestBody OrderCreateRequest orderCreateRequest) {
-        return orderService.createNewOrder(orderCreateRequest);
+        Optional<User> authenticatedUser = userAuthService.getAuthenticatedUser();
+
+        if (authenticatedUser.isEmpty())
+            return ResponseEntity.notFound().build();
+        return orderService.createNewOrder(orderCreateRequest, authenticatedUser.get());
     }
 
     @PutMapping("update")

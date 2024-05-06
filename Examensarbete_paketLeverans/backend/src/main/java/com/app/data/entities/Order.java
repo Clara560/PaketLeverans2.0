@@ -94,8 +94,8 @@ public class Order {
         return orderDateCreated;
     }
 
-    public void setOrderDateCreated(LocalDateTime orderDateCreated) {
-        this.orderDateCreated = orderDateCreated;
+    public void setOrderDateCreated() {
+        this.orderDateCreated = LocalDateTime.now();
     }
 
     public LocalDateTime getDeliveryDate() {

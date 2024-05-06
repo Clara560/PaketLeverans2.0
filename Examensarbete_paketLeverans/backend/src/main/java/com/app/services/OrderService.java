@@ -4,6 +4,8 @@ import com.app.controllers.types.OrderTypes.OrderCreateRequest;
 import com.app.controllers.types.OrderTypes.OrderResponse;
 import com.app.controllers.types.OrderTypes.OrderUpdateRequest;
 import com.app.data.entities.Order;
+import com.app.data.entities.Parcel;
+import com.app.data.entities.User;
 import com.app.data.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +20,28 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
-    public ResponseEntity<OrderResponse> createNewOrder(OrderCreateRequest orderCreateRequest) {
+    public ResponseEntity<OrderResponse> createNewOrder(OrderCreateRequest orderCreateRequest, User user) {
         Order order = new Order();
 
         order.setOrderComments(orderCreateRequest.getOrderComments());
-        order.setOrderDateCreated(orderCreateRequest.getOrderDateCreated());
+        order.setOrderDateCreated();
         order.setOrderStatus(orderCreateRequest.getOrderStatus());
         order.setOrderDescription(orderCreateRequest.getOrderDescription());
         order.setDeliveryAddress(orderCreateRequest.getDeliveryAddress());
         order.setDispatchAddress(orderCreateRequest.getDispatchAddress());
-        order.setUser(orderCreateRequest.getUser());
+        order.setUser(user);
+
+        Parcel parcel = new Parcel();
+        parcel.setParcelWidth(orderCreateRequest.getParcelWidth());
+        parcel.setParcelWeight(orderCreateRequest.getParcelWeight());
+        parcel.setParcelLength(orderCreateRequest.getParcelLength());
+        parcel.setParcelHeight(orderCreateRequest.getParcelHeight());
+
+        order.setParcel(parcel);
 
         return ResponseEntity.ok(new OrderResponse(orderRepository.save(order)));
+
+
     }
 
     public void deleteOrder(long id) {
@@ -44,7 +56,6 @@ public class OrderService {
 
         if (order.isPresent()) {
             order.get().setOrderComments(orderUpdateRequest.getOrderComments());
-            order.get().setOrderDateCreated(orderUpdateRequest.getOrderDateCreated());
             order.get().setOrderStatus(orderUpdateRequest.getOrderStatus());
             order.get().setOrderDescription(orderUpdateRequest.getOrderDescription());
             order.get().setDeliveryAddress(orderUpdateRequest.getDeliveryAddress());

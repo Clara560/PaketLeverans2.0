@@ -9,11 +9,14 @@ public class OrderUpdateRequest {
 
     private long id;
 
+    private double parcelWeight;
 
-    private User user;
+    private double parcelLength;
 
+    private double parcelHeight;
 
-    private Parcel parcel;
+    private double parcelWidth;
+
 
 
     private String dispatchAddress;
@@ -45,20 +48,36 @@ public class OrderUpdateRequest {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public double getParcelWeight() {
+        return parcelWeight;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setParcelWeight(double parcelWeight) {
+        this.parcelWeight = parcelWeight;
     }
 
-    public Parcel getParcel() {
-        return parcel;
+    public double getParcelLength() {
+        return parcelLength;
     }
 
-    public void setParcel(Parcel parcel) {
-        this.parcel = parcel;
+    public void setParcelLength(double parcelLength) {
+        this.parcelLength = parcelLength;
+    }
+
+    public double getParcelHeight() {
+        return parcelHeight;
+    }
+
+    public void setParcelHeight(double parcelHeight) {
+        this.parcelHeight = parcelHeight;
+    }
+
+    public double getParcelWidth() {
+        return parcelWidth;
+    }
+
+    public void setParcelWidth(double parcelWidth) {
+        this.parcelWidth = parcelWidth;
     }
 
     public String getDispatchAddress() {

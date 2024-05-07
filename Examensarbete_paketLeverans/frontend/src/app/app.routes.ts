@@ -4,11 +4,13 @@ import {OrdersPageComponent} from "./pages/orders/orders-page/orders-page.compon
 import {LoginPageComponent} from "./pages/login/login-page/login-page.component";
 import {OrderCreateComponent} from "./pages/orders/order-create/order-create.component";
 import {NgModule} from "@angular/core";
+import {OrderUpdateComponent} from "./pages/orders/order-update/order-update.component";
 
 export const routes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'user/orders', component: OrdersPageComponent},
   {path: 'order/create', component: OrderCreateComponent},
+  {path: 'order/update', component: OrderUpdateComponent},
   {path: 'login', component: LoginPageComponent},
   {path: '**', redirectTo: ''}
 ];

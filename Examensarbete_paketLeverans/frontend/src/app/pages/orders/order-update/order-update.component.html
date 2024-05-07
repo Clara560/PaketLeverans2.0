@@ -1,0 +1,6 @@
+<div class="container">
+
+  <div *ngIf="orderDetails">
+    <app-order-form [orderDetails]="orderDetails" (orderFormEvent)="orderFormUpdate($event)"></app-order-form>
+  </div>
+</div>

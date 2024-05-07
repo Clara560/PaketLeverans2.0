@@ -1,4 +1,6 @@
-
 <div class="container">
-  <pre>{{orders}}</pre>
+  <div *ngFor="let order of orders;">{{order.name}}
+    <pre>{{order|json}}</pre>
+  </div>
 </div>
+

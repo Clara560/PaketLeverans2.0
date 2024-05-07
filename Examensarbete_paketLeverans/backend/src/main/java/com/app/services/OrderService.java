@@ -29,6 +29,7 @@ public class OrderService {
         order.setOrderDescription(orderCreateRequest.getOrderDescription());
         order.setDeliveryAddress(orderCreateRequest.getDeliveryAddress());
         order.setDispatchAddress(orderCreateRequest.getDispatchAddress());
+        order.setDeliveryDate(orderCreateRequest.getDeliveryDate());
         order.setUser(user);
 
         Parcel parcel = new Parcel();
@@ -48,25 +49,31 @@ public class OrderService {
         orderRepository.deleteById(id);
     }
 
-    public ResponseEntity<OrderResponse> updateOrder(OrderUpdateRequest orderUpdateRequest) {
-        Optional<Order> order = orderRepository.findById(orderUpdateRequest.getId());
+    public ResponseEntity<OrderResponse> updateOrder(OrderUpdateRequest orderUpdateRequest, long id) {
+        Optional<Order> order = orderRepository.findById(id);
 
         if (order.isEmpty())
             return ResponseEntity.notFound().build();
 
+        Order updatedOrder = order.get();
         if (order.isPresent()) {
-            order.get().setOrderComments(orderUpdateRequest.getOrderComments());
-            order.get().setOrderStatus(orderUpdateRequest.getOrderStatus());
-            order.get().setOrderDescription(orderUpdateRequest.getOrderDescription());
-            order.get().setDeliveryAddress(orderUpdateRequest.getDeliveryAddress());
-            order.get().setDispatchAddress(orderUpdateRequest.getDispatchAddress());
-            order.get().setUser(orderUpdateRequest.getUser());
+            updatedOrder.setOrderComments(orderUpdateRequest.getOrderComments());
+            updatedOrder.setOrderStatus(orderUpdateRequest.getOrderStatus());
+            updatedOrder.setOrderDescription(orderUpdateRequest.getOrderDescription());
+            updatedOrder.setDeliveryAddress(orderUpdateRequest.getDeliveryAddress());
+            updatedOrder.setDispatchAddress(orderUpdateRequest.getDispatchAddress());
 
-            orderRepository.save(order.get());
+            Parcel parcel = updatedOrder.getParcel();
+            parcel.setParcelHeight(orderUpdateRequest.getParcelHeight());
+            parcel.setParcelWidth(orderUpdateRequest.getParcelWidth());
+            parcel.setParcelWeight(orderUpdateRequest.getParcelWeight());
+            parcel.setParcelLength(orderUpdateRequest.getParcelLength());
+
+            orderRepository.save(updatedOrder);
 
         }
 
-        return ResponseEntity.ok(new OrderResponse(orderRepository.save(order.get())));
+        return ResponseEntity.ok(new OrderResponse(orderRepository.save(updatedOrder)));
 
 
     }

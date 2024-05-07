@@ -6,14 +6,19 @@ import {KeycloakService} from "./services/keycloak-service/keycloak.service";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {OrderService} from "./services/order-service/order.service";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {RouterModule} from "@angular/router";
+import {BrowserModule} from "@angular/platform-browser";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
 
   ],
   imports: [
-    CommonModule,
+    RouterModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     HeaderComponent,
     FooterComponent,
   ],
@@ -27,6 +32,10 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
     OrderService
   ],
   exports: [
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     HeaderComponent,
     FooterComponent
   ]

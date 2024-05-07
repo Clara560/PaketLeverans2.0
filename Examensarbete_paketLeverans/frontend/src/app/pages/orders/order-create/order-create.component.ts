@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule} fr
 import {OrderService} from "../../../shared/services/order-service/order.service";
 import {Router} from "@angular/router";
 import {SharedModule} from "../../../shared/shared.module";
+import {OrderRequest} from "../../../shared/models/order.model";
+import {OrderFormComponent} from "../../../shared/components/order-form/order-form.component";
 
 
 @Component({
@@ -12,37 +14,33 @@ import {SharedModule} from "../../../shared/shared.module";
   imports: [
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OrderFormComponent
   ],
   styleUrl: './order-create.component.scss'
 })
 export class OrderCreateComponent {
-  orderForm: FormGroup;
-
   constructor(
     private orderService: OrderService,
     private router: Router
   ) {
-    this.orderForm = new FormGroup({
-      orderComments: new FormControl(null, [Validators.required]),
-      orderStatus: new FormControl(null, [Validators.required]),
-      orderDescription: new FormControl(null, [Validators.required]),
-      deliveryAddress: new FormControl(null, [Validators.required]),
-      dispatchAddress: new FormControl(null, [Validators.required]),
-      parcelWeight: new FormControl(null, [Validators.required]),
-      parcelLength: new FormControl(null, [Validators.required]),
-      parcelHeight: new FormControl(null, [Validators.required]),
-      parcelWidth: new FormControl(null, [Validators.required])
-    })
   }
 
-
-
-
-
-  onSubmit (){
-    if (this.orderForm.valid){
-      this.orderService.createOrder(this.orderForm.value).subscribe({
+  orderFormUpdate(data: any) {
+      let orderValues = data.value;
+      let request: OrderRequest = {
+        orderComments: orderValues.orderComments,
+        orderStatus: orderValues.orderStatus,
+        orderDescription: orderValues.orderDescription,
+        deliveryAddress: orderValues.deliveryAddress,
+        dispatchAddress: orderValues.dispatchAddress,
+        parcelWeight: orderValues.parcelWeight,
+        parcelLength: orderValues.parcelLength,
+        parcelHeight: orderValues.parcelHeight,
+        parcelWidth: orderValues.parcelWidth,
+        deliveryDate: new Date(orderValues.deliveryDate)
+      }
+      this.orderService.createOrder(request).subscribe({
         next: ((response) => {
           console.log('Order created', response);
           alert('Order successfully created');
@@ -52,7 +50,5 @@ export class OrderCreateComponent {
           console.error('Error creating order', error);
         }
       });
-    }
   }
-
 }

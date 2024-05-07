@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 
 public class OrderCreateRequest {
 
-    private long orderId;
 
     private double parcelWeight;
 
@@ -32,13 +31,6 @@ public class OrderCreateRequest {
 
     private String orderComments;
 
-    public long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
-    }
 
     public String getDispatchAddress() {
         return dispatchAddress;

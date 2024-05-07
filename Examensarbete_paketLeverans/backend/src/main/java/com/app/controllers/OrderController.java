@@ -34,9 +34,9 @@ public class OrderController {
         return orderService.createNewOrder(orderCreateRequest, authenticatedUser.get());
     }
 
-    @PutMapping("update")
-    public ResponseEntity<OrderResponse> updateOrder(@RequestBody OrderUpdateRequest orderUpdateRequest) {
-        return orderService.updateOrder(orderUpdateRequest);
+    @PutMapping("update/{id}")
+    public ResponseEntity<OrderResponse> updateOrder(@PathVariable ("id") long id, @RequestBody OrderUpdateRequest orderUpdateRequest) {
+        return orderService.updateOrder(orderUpdateRequest, id);
     }
 
     @DeleteMapping("/delete/{id}")

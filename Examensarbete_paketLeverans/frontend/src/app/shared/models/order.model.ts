@@ -2,11 +2,9 @@
 import {User} from "./user.model";
 import {Parcel} from "./parcel.model";
 
-export type LocalDateTime = string;
 
-export interface OrderCreateRequest {
+export interface OrderRequest {
 
-  orderId: bigint;
 
   parcelWeight: number;
   parcelLength: number;
@@ -23,9 +21,7 @@ export interface OrderCreateRequest {
 
   orderComments: string;
 
-  orderDateCreated: LocalDateTime;
-
-  deliveryDate: LocalDateTime;
+  deliveryDate: Date;
 
 
 }
@@ -48,9 +44,9 @@ export interface Order {
 
   orderComments: string;
 
-  orderDateCreated: LocalDateTime;
+  orderDateCreated: Date;
 
-  deliveryDate: LocalDateTime;
+  deliveryDate: Date;
 
 }
 

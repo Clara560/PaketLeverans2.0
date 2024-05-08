@@ -10,7 +10,7 @@ export const routes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'user/orders', component: OrdersPageComponent},
   {path: 'order/create', component: OrderCreateComponent},
-  {path: 'order/update', component: OrderUpdateComponent},
+  {path: 'order/update/:orderId', component: OrderUpdateComponent},
   {path: 'login', component: LoginPageComponent},
   {path: '**', redirectTo: ''}
 ];

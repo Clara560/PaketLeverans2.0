@@ -1,53 +1,39 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="orderForm" data-bitwarden-watching="1">
-  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <h1 class="h3 mb-3 fw-normal">Order Form</h1>
   <div class="form-floating">
-    <input type="email" class="form-control" id="floatingInput" formControlName="orderComments"
-           placeholder="name@example.com">
+    <input type="email" class="form-control" id="floatingInput" formControlName="orderComments">
     <label for="floatingInput">orderComments</label>
   </div>
   <div class="form-floating">
-    <input type="text" class="form-control" id="floatingOrderStatus" formControlName="orderStatus"
-           placeholder="Password">
-    <label for="floatingOrderStatus">orderStatus</label>
-  </div>
-  <div class="form-floating">
-    <input type="text" class="form-control" id="floatingOrderDescription" formControlName="orderDescription"
-           placeholder="Password">
+    <input type="text" class="form-control" id="floatingOrderDescription" formControlName="orderDescription">
     <label for="floatingOrderDescription">orderDescription</label>
   </div>
   <div class="form-floating">
-    <input type="text" class="form-control" id="floatingDeliveryAddress" formControlName="deliveryAddress"
-           placeholder="Password">
+    <input type="text" class="form-control" id="floatingDeliveryAddress" formControlName="deliveryAddress">
     <label for="floatingDeliveryAddress">deliveryAddress</label>
   </div>
   <div class="form-floating">
-    <input type="text" class="form-control" id="floatingDispatchAddress" formControlName="dispatchAddress"
-           placeholder="Password">
+    <input type="text" class="form-control" id="floatingDispatchAddress" formControlName="dispatchAddress">
     <label for="floatingDispatchAddress">dispatchAddress</label>
   </div>
   <div class="form-floating">
-    <input type="number" class="form-control" id="floatingParcelWeight" formControlName="parcelWeight"
-           placeholder="Password">
+    <input type="number" class="form-control" id="floatingParcelWeight" formControlName="parcelWeight">
     <label for="floatingParcelWeight">parcelWeight</label>
   </div>
   <div class="form-floating">
-    <input type="number" class="form-control" id="floatingParcelLength" formControlName="parcelLength"
-           placeholder="Password">
+    <input type="number" class="form-control" id="floatingParcelLength" formControlName="parcelLength">
     <label for="floatingParcelLength">parcelLength</label>
   </div>
   <div class="form-floating">
-    <input type="number" class="form-control" id="floatingParcelHeight" formControlName="parcelHeight"
-           placeholder="Password">
+    <input type="number" class="form-control" id="floatingParcelHeight" formControlName="parcelHeight">
     <label for="floatingParcelHeight">parcelHeight</label>
   </div>
   <div class="form-floating">
-    <input type="number" class="form-control" id="floatingParcelWidth" formControlName="parcelWidth"
-           placeholder="Password">
+    <input type="number" class="form-control" id="floatingParcelWidth" formControlName="parcelWidth">
     <label for="floatingParcelWidth">parcelWidth</label>
   </div>
   <div class="form-floating">
-    <input type="datetime-local" class="form-control" id="floatingDeliveryDate" formControlName="deliveryDate"
-           placeholder="Password">
+    <input type="datetime-local" class="form-control" id="floatingDeliveryDate" formControlName="deliveryDate">
     <label for="floatingDeliveryDate">DeliveryDate</label>
   </div>
   <button class="btn btn-primary w-100 py-2" type="submit">Submit</button>

@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from "../../../shared/services/order-service/order.service";
 import {CommonModule} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-orders-page',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './orders-page.component.html',
   styleUrl: './orders-page.component.scss'

@@ -24,7 +24,6 @@ export class OrderFormComponent implements OnInit{
   ) {
     this.orderForm = new FormGroup({
       orderComments: new FormControl(null, [Validators.required]),
-      orderStatus: new FormControl(null, [Validators.required]),
       orderDescription: new FormControl(null, [Validators.required]),
       deliveryAddress: new FormControl(null, [Validators.required]),
       dispatchAddress: new FormControl(null, [Validators.required]),
@@ -41,7 +40,6 @@ export class OrderFormComponent implements OnInit{
     if (this.orderDetails)
       this.orderForm = new FormGroup({
         orderComments: new FormControl(this.orderDetails.orderComments, [Validators.required]),
-        orderStatus: new FormControl(this.orderDetails.orderStatus, [Validators.required]),
         orderDescription: new FormControl(this.orderDetails.orderDescription, [Validators.required]),
         deliveryAddress: new FormControl(this.orderDetails.deliveryAddress, [Validators.required]),
         dispatchAddress: new FormControl(this.orderDetails.dispatchAddress, [Validators.required]),

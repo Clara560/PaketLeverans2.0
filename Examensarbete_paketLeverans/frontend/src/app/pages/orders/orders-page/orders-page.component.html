@@ -1,6 +1,48 @@
 <div class="container">
-  <div *ngFor="let order of orders;">{{order.name}}
-    <pre>{{order|json}}</pre>
+  <div *ngFor="let order of orders;">
+    {{order.name}}
+    <pre></pre>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col" *ngFor="let order of orders;">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Order</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">{{order.id}}</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li></li>
+            <li>Order status: {{order.orderStatus}}</li>
+            <li>Order description: {{order.orderDescription}}</li>
+            <li>Delivery date: {{order.deliveryDate}}</li>
+            <a class="" data-bs-toggle="collapse" href="#ViewOrderCollapse{{order.id}}" role="button" aria-expanded="false" >View order</a>
+          </ul>
+          <div class="row mb-2">
+            <div class="col">
+              <div class="collapse multi-collapse" id="ViewOrderCollapse{{order.id}}">
+                <div class="card card-body">
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li></li>
+                    <li>Order comments: {{order.orderComments}}</li>
+                    <li>Order Description: {{order.orderDescription}}</li>
+                    <li>Delivery address: {{order.deliveryAddress}}</li>
+                    <li>Dispatch address: {{order.dispatchAddress}}</li>
+                    <li>Parcel weight: {{order.parcel.parcelWeight}}</li>
+                    <li>Parcel length: {{order.parcel.parcelLength}}</li>
+                    <li>Parcel height: {{order.parcel.parcelHeight}}</li>
+                    <li>Parcel width: {{order.parcel.parcelWidth}}</li>
+                    <li>Delivery date: {{order.deliveryDate}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button [routerLink]="['/order/update/', order.id]" type="button" class="w-100 btn btn-lg btn-outline-primary">Update order</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 

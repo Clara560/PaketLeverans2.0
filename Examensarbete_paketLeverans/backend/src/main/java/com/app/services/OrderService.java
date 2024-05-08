@@ -25,7 +25,7 @@ public class OrderService {
 
         order.setOrderComments(orderCreateRequest.getOrderComments());
         order.setOrderDateCreated();
-        order.setOrderStatus(orderCreateRequest.getOrderStatus());
+        order.setOrderStatus("Requested");
         order.setOrderDescription(orderCreateRequest.getOrderDescription());
         order.setDeliveryAddress(orderCreateRequest.getDeliveryAddress());
         order.setDispatchAddress(orderCreateRequest.getDispatchAddress());
@@ -58,16 +58,17 @@ public class OrderService {
         Order updatedOrder = order.get();
         if (order.isPresent()) {
             updatedOrder.setOrderComments(orderUpdateRequest.getOrderComments());
-            updatedOrder.setOrderStatus(orderUpdateRequest.getOrderStatus());
             updatedOrder.setOrderDescription(orderUpdateRequest.getOrderDescription());
             updatedOrder.setDeliveryAddress(orderUpdateRequest.getDeliveryAddress());
             updatedOrder.setDispatchAddress(orderUpdateRequest.getDispatchAddress());
+            updatedOrder.setDeliveryDate(orderUpdateRequest.getDeliveryDate());
 
             Parcel parcel = updatedOrder.getParcel();
             parcel.setParcelHeight(orderUpdateRequest.getParcelHeight());
             parcel.setParcelWidth(orderUpdateRequest.getParcelWidth());
             parcel.setParcelWeight(orderUpdateRequest.getParcelWeight());
             parcel.setParcelLength(orderUpdateRequest.getParcelLength());
+
 
             orderRepository.save(updatedOrder);
 
